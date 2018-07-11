@@ -70,6 +70,10 @@ class Stopwatch {
     liElement.innerText = this.format(this.times);
     this.scoresTable.appendChild(liElement);
   }
+
+  clearList() {
+    this.scoresTable.innerHTML = '';
+  }
 }
 
 const startButton = document.getElementById('start');
@@ -83,5 +87,8 @@ resetButton.addEventListener('click', () => stopwatch.reset());
 
 const saveScoreButton = document.getElementById('save');
 saveScoreButton.addEventListener('click', () => stopwatch.saveScore());
+
+const clearListButton = document.getElementById('clearList');
+clearListButton.addEventListener('click', () => stopwatch.clearList());
 
 const stopwatch = new Stopwatch(document.querySelector('.stopwatch'), document.querySelector('.scoresTable'));
