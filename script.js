@@ -1,7 +1,8 @@
 class Stopwatch {
-  constructor(display) {
+  constructor(display, scores) {
     this.running = false;
     this.display = display;
+    this.scoresTable = scores;
     this.reset();
     this.print(this.times);
   }
@@ -62,6 +63,13 @@ class Stopwatch {
       this.times.seconds = 0;
     }
   }
+
+  saveScore() {
+    let liElement = document.createElement('li');
+
+    liElement.innerText = this.format(this.times);
+    this.scoresTable.appendChild(liElement);
+  }
 }
 
 const startButton = document.getElementById('start');
@@ -73,4 +81,7 @@ stopButton.addEventListener('click', () => stopwatch.stop());
 const resetButton = document.getElementById('reset');
 resetButton.addEventListener('click', () => stopwatch.reset());
 
-const stopwatch = new Stopwatch(document.querySelector('.stopwatch'));
+const saveScoreButton = document.getElementById('save');
+saveScoreButton.addEventListener('click', () => stopwatch.saveScore());
+
+const stopwatch = new Stopwatch(document.querySelector('.stopwatch'), document.querySelector('.scoresTable'));
