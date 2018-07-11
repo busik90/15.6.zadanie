@@ -37,6 +37,11 @@ class Stopwatch {
     }
   }
 
+  stop() {
+    this.running = false;
+    clearInterval(this.watch);
+  }
+
   step() {
     if (!this.running) return;
     this.calculate();
