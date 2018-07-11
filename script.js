@@ -5,6 +5,14 @@ class Stopwatch {
     this.reset();
     this.print(this.times);
   }
+
+  reset() {
+    this.times = {
+      minutes: 0,
+      seconds: 0,
+      miliseconds: 0
+    };
+  }
 }
 
 let startButton = document.getElementById('start');
